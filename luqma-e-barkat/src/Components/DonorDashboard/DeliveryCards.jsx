@@ -82,7 +82,8 @@
 //----------------------- Second Design -----------------------
 import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
-
+import { faBox } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const deliveries = [
   {
     id: 1,
@@ -138,7 +139,7 @@ export default function DeliveryCards() {
   return (
     <div className="p-6">
       <h1 className="text-center text-4xl font-bold text-gray-800 mb-10 mt-4">
-        📦 My Donations
+        <FontAwesomeIcon icon={faBox} /> My Donations
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -157,7 +158,9 @@ export default function DeliveryCards() {
             <p className="text-gray-600 mb-4">{delivery.description}</p>
 
             <span
-              className={`inline-block px-3 py-1 text-sm rounded-full font-medium ${statusStyles[delivery.status]}`}
+              className={`inline-block px-3 py-1 text-sm rounded-full font-medium ${
+                statusStyles[delivery.status]
+              }`}
             >
               {delivery.status}
             </span>
