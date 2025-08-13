@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Requester Dashboard</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+        font-size: 18px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background-color: #22c55e; /* bg-green-500 */
+        width: 260px;
+        color: white;
+        padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 22px;
+    }
+
+    .sidebar button {
+        background: none;
+        border: none;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background 0.3s;
+    }
+
+    .sidebar button:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    /* Main content */
+    .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 26px;
+    }
+
+    /* Cards for dashboard */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        font-size: 18px;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .card button {
+        background-color: #22c55e;
+        border: none;
+        color: white;
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 6px;
+        margin-top: 12px;
+    }
+
+    .card button:hover {
+        background-color: #16a34a;
+    }
+
+    /* Forms & tables */
+    form {
+        max-width: 450px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 18px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select, textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <button onclick="loadSection('dashboard')">Dashboard</button>
+    <button onclick="loadSection('requestFood')">Request Food</button>
+    <button onclick="loadSection('availableDonations')">Available Donations</button>
+    <button onclick="loadSection('trackStatus')">Track Request Status</button>
+    <button onclick="loadSection('history')">Request History</button>
+    <button onclick="loadSection('editProfile')">Edit Profile</button>
+    <button onclick="loadSection('volunteerInfo')">Volunteer Contact Info</button>
+    <button onclick="loadSection('feedback')">Feedback / Rating</button>
+    <button onclick="signOut()">Sign Out</button>
+</div>
+
+<div class="main" id="main">
+    <!-- Content loads here -->
+</div>
+
+<script>
+function loadSection(section) {
+    let main = document.getElementById("main");
+
+    if(section === 'dashboard') {
+        main.innerHTML = `
+            <h1>Main Dashboard</h1>
+            <div class="cards">
+                <div class="card">
+                    <h3>Request Food</h3>
+                    <button onclick="loadSection('requestFood')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Available Donations</h3>
+                    <button onclick="loadSection('availableDonations')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Track Request Status</h3>
+                    <button onclick="loadSection('trackStatus')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Request History</h3>
+                    <button onclick="loadSection('history')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Edit Profile</h3>
+                    <button onclick="loadSection('editProfile')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Volunteer Contact Info</h3>
+                    <button onclick="loadSection('volunteerInfo')">Go</button>
+                </div>
+                <div class="card">
+                    <h3>Feedback / Rating</h3>
+                    <button onclick="loadSection('feedback')">Go</button>
+                </div>
+            </div>
+        `;
+    }
+
+    else if(section === 'requestFood') {
+        main.innerHTML = `
+            <h1>Request Food</h1>
+            <form>
+                <label>Quantity</label>
+                <input type="number" placeholder="Enter quantity">
+                <label>Type</label>
+                <input type="text" placeholder="Food type">
+                <label>Urgency</label>
+                <select><option>Immediate</option><option>Within 24 hours</option></select>
+                <label>Delivery</label>
+                <select><option>Pickup</option><option>Home Delivery</option></select>
+                <label>Location</label>
+                <textarea placeholder="Enter location"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        `;
+    }
+
+    else if(section === 'availableDonations') {
+        main.innerHTML = `
+            <h1>Available Donations</h1>
+            <table>
+                <tr><th>Food Item</th><th>Quantity</th><th>Pickup/Delivery</th><th>Location</th></tr>
+            </table>
+        `;
+    }
+
+    else if(section === 'trackStatus') {
+        main.innerHTML = `
+            <h1>Track Request Status</h1>
+            <p>Status: Pending → Approved → Out for Delivery → Delivered</p>
+        `;
+    }
+
+    else if(section === 'history') {
+        main.innerHTML = `
+            <h1>Request History</h1>
+            <table>
+                <tr><th>Date</th><th>Item</th><th>Status</th></tr>
+            </table>
+        `;
+    }
+
+    else if(section === 'editProfile') {
+        main.innerHTML = `
+            <h1>Edit Profile</h1>
+            <form>
+                <label>Name</label>
+                <input type="text" placeholder="Enter name">
+                <label>Email</label>
+                <input type="email" placeholder="Enter email">
+                <label>Phone</label>
+                <input type="text" placeholder="Enter phone number">
+                <button type="submit">Save</button>
+            </form>
+        `;
+    }
+
+    else if(section === 'volunteerInfo') {
+        main.innerHTML = `
+            <h1>Volunteer Contact Info</h1>
+            <p>Name: (Not Assigned)</p>
+            <p>Delivery Window: (N/A)</p>
+        `;
+    }
+
+    else if(section === 'feedback') {
+        main.innerHTML = `
+            <h1>Feedback / Rating</h1>
+            <form>
+                <label>Rating (1-5)</label>
+                <input type="number" min="1" max="5">
+                <label>Feedback</label>
+                <textarea placeholder="Write your feedback here"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        `;
+    }
+}
+
+function signOut() {
+    if(confirm("Are you sure you want to sign out?")) {
+        alert("Signed out successfully!");
+    }
+}
+
+window.onload = function() {
+    loadSection('requestFood'); // Default landing page
+}
+</script>
+
+</body>
+</html>
