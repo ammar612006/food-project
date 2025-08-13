@@ -78,10 +78,10 @@
 
 // export default DonateFoodForm;
 
-
-
 //----------------------------- Second Design -----------------------------
 import React from "react";
+import { FaImage } from "react-icons/fa";
+
 import {
   FaUtensils,
   FaListOl,
@@ -138,6 +138,35 @@ const DonateFoodForm = () => {
             />
           </div>
 
+          {/* Add Image */}
+          <div className="flex items-center bg-gray-100 px-4 py-3 rounded-lg shadow-sm mt-3">
+            <FaImage className="text-green-600 mr-3" />
+
+            {/* Hidden file input */}
+            <input
+              id="file-upload"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => console.log(e.target.files[0])} // handle file here
+            />
+
+            {/* Optional: file name preview */}
+            <span
+              id="file-name"
+              className="ml-3 text-gray-500 text-sm truncate"
+            >
+              No file chosen
+            </span>
+            {/* Custom button */}
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer justify-right bg-gradient-to-r from-green-500 to-green-700 text-white font-medium px-4 py-2 rounded-lg shadow-md hover:from-green-600 hover:to-green-800 transition-all duration-200"
+            >
+              Choose Image
+            </label>
+          </div>
+
           {/* Location */}
           <div className="flex items-center bg-gray-100 px-4 py-3 rounded-lg shadow-sm">
             <FaMapMarkerAlt className="text-green-600 mr-3" />
@@ -162,4 +191,3 @@ const DonateFoodForm = () => {
 };
 
 export default DonateFoodForm;
-

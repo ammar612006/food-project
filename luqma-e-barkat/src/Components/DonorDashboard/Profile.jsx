@@ -82,6 +82,10 @@
 //----------------------------- Second Design -----------------------------
 import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaPhone, FaLock, FaEdit } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+
+
 
 export default function Profile() {
   const [profileData, setProfileData] = useState({
@@ -91,6 +95,8 @@ export default function Profile() {
     phone: "1234567890",
     password: "password123",
   });
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const [editingField, setEditingField] = useState(null);
 
@@ -114,16 +120,28 @@ export default function Profile() {
       </div>
       <div className="flex items-center gap-2">
         {editingField === name ? (
-          <input
-            type={name === "password" ? "password" : "text"}
-            name={name}
-            value={profileData[name]}
-            onChange={handleChange}
-            className="border border-gray-300 px-3 py-1 rounded-lg outline-none focus:ring-2 focus:ring-green-400"
-          />
+          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-1 w-full">
+            <input
+              type={name === "password" && !showPassword ? "password" : "text"}
+              name={name}
+              value={profileData[name]}
+              onChange={handleChange}
+              className="flex-1 bg-transparent outline-none"
+            />
+            {name === "password" && (
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            )}
+          </div>
         ) : (
           <span className="text-gray-800">{profileData[name]}</span>
         )}
+
         <button
           type="button"
           onClick={() => setEditingField(editingField === name ? null : name)}
