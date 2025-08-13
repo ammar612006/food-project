@@ -18,7 +18,6 @@
 //     );
 // }
 
-
 //----------------------------- Second Design -----------------------------
 // import { NavLink } from "react-router-dom";
 
@@ -55,7 +54,6 @@
 //   );
 // }
 
-
 // ----------------------------- Third Design -----------------------------
 import { NavLink } from "react-router-dom";
 import {
@@ -77,36 +75,41 @@ export default function LeftSidebar() {
     }`;
 
   return (
-    <div className="h-full pt-8 px-4 bg-green-900 bg-opacity-80 backdrop-blur-lg shadow-xl">
-      <h1 className="mb-12 text-3xl font-bold text-center text-white">
-        Donor Panel
-      </h1>
-      <ul className="flex flex-col gap-4 text-lg">
-        <NavLink to="/dashboard-doner/my-donations" className={navItemClass}>
-          <FaGift />
-          My Donations
-        </NavLink>
-        <NavLink to="/dashboard-doner/donate-food" className={navItemClass}>
-          <FaDonate />
-          Donate Food
-        </NavLink>
-        <NavLink to="/dashboard-doner/profile" className={navItemClass}>
-          <FaUserCircle />
-          Profile
-        </NavLink>
-        <NavLink to="/dashboard-doner/settings" className={navItemClass}>
-          <FaCog />
-          Settings
-        </NavLink>
-        <NavLink
-          to="/"
-          className="flex items-center gap-3 p-3 text-red-200 hover:text-white hover:bg-red-600 rounded-xl transition-all duration-300 font-semibold"
-        >
-          <FaSignOutAlt />
-          Logout
-        </NavLink>
-      </ul>
-    </div>
-  );
-}
+  <div className="fixed left-0 top-0 h-screen w-64 pt-8 px-4 bg-gradient-to-b from-green-900 via-green-800 to-green-700 backdrop-blur-lg shadow-xl flex flex-col justify-between">
+    {/* Title */}
+    <h1 className="text-3xl  font-bold text-center text-white mb-8">
+      Donor Panel
+    </h1>
 
+    {/* Menu items */}
+    <div className="flex flex-col gap-4 mt-[-100px] text-lg">
+      <NavLink to="/dashboard-doner/my-donations" className={navItemClass}>
+        <FaGift />
+        My Donations
+      </NavLink>
+      <NavLink to="/dashboard-doner/donate-food" className={navItemClass}>
+        <FaDonate />
+        Donate Food
+      </NavLink>
+      <NavLink to="/dashboard-doner/profile" className={navItemClass}>
+        <FaUserCircle />
+        Profile
+      </NavLink>
+      <NavLink to="/dashboard-doner/settings" className={navItemClass}>
+        <FaCog />
+        Settings
+      </NavLink>
+    </div>
+
+    {/* Logout button at bottom */}
+    <NavLink
+      to="/"
+      className="flex items-center mb-4  gap-3 px-4 py-3 text-base text-red-200 hover:text-white hover:bg-red-600 rounded-xl transition-all duration-300 font-semibold"
+    >
+      <FaSignOutAlt size={18} />
+      Logout
+    </NavLink>
+  </div>
+);
+
+}

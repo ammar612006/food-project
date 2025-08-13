@@ -10,6 +10,7 @@ import Contact from "./Pages/Contact";
 import OurProject from "./Pages/OurProject";
 import OTPVerification from "./Pages/OTP-Verification";
 import DashboardDoner from "./Pages/Dashboard-Doner";
+import DashboardRequester from "./Pages/Dashboard-Requester";
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/dashboard-doner/*" element={<DashboardDoner />} />
+        <Route path="/dashboard-requester/*" element={<DashboardRequester />} />
         {/* <Route path="/dashboard-volunteer/*" element={<DashboardDoner />} /> */}
 
         {/* You can add more routes here later */}

@@ -18,7 +18,7 @@ export default function ContactForm() {
       
       {/* Name Field */}
       <div>
-        <label className="block mb-1 font-semibold">Name</label>
+        <label className="block mb-1 font-bold">Name</label>
         <input
           type="text"
           name="name"
@@ -31,7 +31,7 @@ export default function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label className="block mb-1 font-semibold">Email</label>
+        <label className="block mb-1 font-bold">Email</label>
         <input
           type="email"
           name="email"
@@ -44,7 +44,7 @@ export default function ContactForm() {
 
       {/* Message Field */}
       <div>
-        <label className="block mb-1 font-semibold">Message</label>
+        <label className="block mb-1 font-bold">Message</label>
         <textarea
           name="message"
           value={form.message}
@@ -58,7 +58,7 @@ export default function ContactForm() {
       <div className="flex justify-end">
         <button
           type="submit"
-          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+          className="bg-green-300 text-gray-800 font-bold px-6 py-2 rounded hover:bg-slate-700 hover:text-gray-300"
         >
           Send Message
         </button>
