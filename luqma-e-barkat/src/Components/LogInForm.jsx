@@ -54,6 +54,7 @@ function LogInForm() {
                                 <option value="">-- Choose Role --</option>
                                 <option value="donor">Donor</option>
                                 <option value="donee">Donee</option>
+                                <option value="Volunteer">Volunteer</option>
                             </select>
                         </div>
 
